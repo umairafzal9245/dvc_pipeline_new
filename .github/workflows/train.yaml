@@ -19,7 +19,7 @@ jobs:
             dvc metrics diff --show-md master
             gh pr create --title "DVC Metrics Diff" --body "$(dvc metrics diff --show-md master)"
 
-                        
+        if: github.ref == 'refs/heads/modelchanges'       
         run: |
          make install
          dvc repro

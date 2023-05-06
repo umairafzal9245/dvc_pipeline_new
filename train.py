@@ -2,6 +2,7 @@ import pandas as pd
 import numpy as np
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.naive_bayes import MultinomialNB
+from sklearn.linear_model import LogisticRegression
 from sklearn.feature_extraction.text import TfidfTransformer
 from sklearn.pipeline import Pipeline
 from sklearn.model_selection import train_test_split
@@ -18,10 +19,15 @@ def text_process(title):
     return [word for word in nop.split()]
 
 
+# piplineTitle = Pipeline([
+#     ('bow', CountVectorizer(analyzer=text_process)),
+#     ('tfidf', TfidfTransformer()),
+#     ('classifier', MultinomialNB()),
+# ])
 piplineTitle = Pipeline([
     ('bow', CountVectorizer(analyzer=text_process)),
     ('tfidf', TfidfTransformer()),
-    ('classifier', MultinomialNB()),
+    ('classifier', LogisticRegression()),
 ])
 
 X_train, X_test, y_train, y_test = train_test_split(df['text'], df['label'], test_size=0.2, random_state=123)

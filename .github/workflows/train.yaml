@@ -11,14 +11,16 @@ jobs:
           GH_TOKEN: ${{ github.token }}
           REPO_TOKEN: ${{ secrets.REPO_TOKEN }}
                 
-        if [ ${{ github.ref }} == 'refs/heads/modelchange' ]; then
-          run: |
-            make install 
+        run: |
+          if [ ${{ github.ref }} == 'refs/heads/modelchange' ]; then
+            make install
             dvc repro
             git fetch --prune
             dvc metrics diff --show-md master
             gh pr create --title "DVC Metrics Diff" --body "$(dvc metrics diff --show-md master)"
-        fi
+          else
+            echo "Not on the 'modelchange' branch, skipping."
+          fi
 
         run: |
          make install

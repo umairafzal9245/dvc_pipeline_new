@@ -15,5 +15,3 @@ jobs:
           dvc repro
           git fetch --prune
           gh pr create --title "DVC Metrics Diff" --body "$(dvc metrics diff --show-md master)" 
-          
-          

@@ -2,4 +2,3 @@
 /true.csv
 /data_processed.csv
 /metrics.json
-.github/workflows/train.yaml

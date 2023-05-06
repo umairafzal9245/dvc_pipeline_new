@@ -11,7 +11,7 @@ jobs:
           GH_TOKEN: ${{ github.token }}
           REPO_TOKEN: ${{ secrets.REPO_TOKEN }}
 
-        if: github.ref == 'refs/heads/master'
+        if: github.ref == 'refs/heads/modelchanges'
         run: |
             make install 
             dvc repro
@@ -24,7 +24,7 @@ jobs:
           GH_TOKEN: ${{ github.token }}
           REPO_TOKEN: ${{ secrets.REPO_TOKEN }}
 
-        if: github.ref == 'refs/heads/modelchanges'       
+        if: github.ref == 'refs/heads/master'       
         run: |
          make install
          dvc repro

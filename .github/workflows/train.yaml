@@ -12,7 +12,7 @@ jobs:
           REPO_TOKEN: ${{ secrets.REPO_TOKEN }}
 
         if: github.ref == 'refs/heads/master'
-          run: |
+        run: |
             make install 
             dvc repro
             git fetch --prune
